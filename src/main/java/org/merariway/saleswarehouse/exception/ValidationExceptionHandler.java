@@ -1,29 +1,29 @@
 package org.merariway.saleswarehouse.exception;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@ControllerAdvice
+@RestControllerAdvice
 public class ValidationExceptionHandler {
 
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public Map<String, String> handleValidationException(MethodArgumentNotValidException ex) {
+    public ResponseEntity<ErrorArgument> handleValidationException(MethodArgumentNotValidException ex) {
         Map<String, String> errors = new HashMap<>();
 
         ex.getBindingResult().getAllErrors().forEach(err -> {
-            String fieldName = ((FieldError) err).getField();
+            String field = ((FieldError) err).getField();
             String message = err.getDefaultMessage();
 
-            errors.put(fieldName, message);
+            errors.put(field, message);
         });
-        return errors;
+        ErrorArgument errArgument = new ErrorArgument("El formato que estas enviado es incorrecto", errors);
+        return new ResponseEntity<>(errArgument, HttpStatus.BAD_REQUEST);
     }
 }
