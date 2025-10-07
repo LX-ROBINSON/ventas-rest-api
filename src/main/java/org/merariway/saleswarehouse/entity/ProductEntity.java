@@ -14,9 +14,13 @@ public class Product {
 
     private String productName;
 
-    private BigDecimal price;
+    private String brand;
+
+    private int stock;
 
     private int available;
+
+    private BigDecimal price;
 
     @OneToOne
     @JoinColumn(name = "category_id", referencedColumnName = "id") // este campo se mapeara mediante clave foranea
@@ -41,12 +45,20 @@ public class Product {
         this.productName = productName;
     }
 
-    public BigDecimal getPrice() {
-        return price;
+    public String getBrand() {
+        return brand;
     }
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 
     public int getAvailable() {
@@ -55,6 +67,14 @@ public class Product {
 
     public void setAvailable(int available) {
         this.available = available;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
     public Category getCategoryId() {
