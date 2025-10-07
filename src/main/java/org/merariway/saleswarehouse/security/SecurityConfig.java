@@ -19,8 +19,10 @@ public class SecurityConfig  {
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(Customizer.withDefaults())
                 .authorizeHttpRequests(auth ->
-                    auth.requestMatchers(.PUBLIEndPointSecurityC).hasRole()
+                    auth.requestMatchers("").permitAll()
                 )
-                .httpBasic(AbstractHttpConfigurer::disable)
+                .httpBasic(AbstractHttpConfigurer::disable);
+
+        return http.build();
     }
 }
