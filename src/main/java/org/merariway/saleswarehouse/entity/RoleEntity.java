@@ -3,16 +3,16 @@ package org.merariway.saleswarehouse.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "category")
-public class CategoryEntity {
+@Table(name = "role")
+public class RoleEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String categoryName;
+    private String role;
 
-    public CategoryEntity() {
+    public RoleEntity() {
     }
 
     public int getId() {
@@ -23,11 +23,11 @@ public class CategoryEntity {
         this.id = id;
     }
 
-    public String getCategoryName() {
-        return categoryName;
+    public String getRole() {
+        return role;
     }
 
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
+    public void setRole(String role) {
+        this.role = role;
     }
 }

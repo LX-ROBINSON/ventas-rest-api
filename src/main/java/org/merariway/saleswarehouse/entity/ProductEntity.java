@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "product")
-public class Product {
+public class ProductEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,9 +24,9 @@ public class Product {
 
     @OneToOne
     @JoinColumn(name = "category_id", referencedColumnName = "id") // este campo se mapeara mediante clave foranea
-    private Category categoryId;
+    private CategoryEntity categoryId;
 
-    public Product() {
+    public ProductEntity() {
     }
 
     public int getId() {
@@ -77,11 +77,11 @@ public class Product {
         this.price = price;
     }
 
-    public Category getCategoryId() {
+    public CategoryEntity getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(Category categoryId) {
+    public void setCategoryId(CategoryEntity categoryId) {
         this.categoryId = categoryId;
     }
 }
