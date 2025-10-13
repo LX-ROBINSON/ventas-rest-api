@@ -1,33 +1,35 @@
 package org.merariway.saleswarehouse.controller.auth;
 
+import jakarta.validation.Valid;
 import org.merariway.saleswarehouse.dto.LoginFirebaseDTO;
 import org.merariway.saleswarehouse.service.auth.AuthFirebaseService;
+import org.merariway.saleswarehouse.service.auth.AuthFirebaseServiceImpl;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 @RequestMapping("/auth")
 public class AuthFirebaseController {
 
     private final AuthFirebaseService authService;
 
-
-    public AuthFirebaseController(AuthFirebaseService authService) {
+    public AuthFirebaseController(AuthFirebaseServiceImpl authService) {
         this.authService = authService;
     }
 
-    @PostMapping("/registerEmail")
-    public ResponseEntity<String> registerEmail(@RequestBody LoginFirebaseDTO loginFirebaseDTO) {
+    @PostMapping("/register-email")
+    public ResponseEntity<String> registerEmail(@Valid @RequestBody LoginFirebaseDTO loginFirebaseDTO) {
         authService.registerEmail(loginFirebaseDTO);
 
         return new ResponseEntity<>(
-                "Correo creado e iniciado correctamente",
+                "El correo se creo correctamente",
                 HttpStatus.OK
         );
+    }
+
+    @GetMapping("/test")
+    public String test() {
+        return "Tienes acceso";
     }
 }

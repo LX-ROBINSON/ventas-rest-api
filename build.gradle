@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'org.merariway'
-version = '0.0.1-SNAPSHOT'
+version = '1.0'
 description = 'API REST que gestionar las tareas de ventas'
 
 java {
@@ -23,5 +23,6 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'com.google.firebase:firebase-admin:9.7.0'
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 }

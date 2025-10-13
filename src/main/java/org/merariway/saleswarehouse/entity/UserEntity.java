@@ -25,6 +25,12 @@ public class UserEntity {
     public UserEntity() {
     }
 
+    public UserEntity(String uidFirebase, String email, String displayName) {
+        this.uidFirebase = uidFirebase;
+        this.email = email;
+        this.displayName = displayName;
+    }
+
     public int getId() {
         return id;
     }

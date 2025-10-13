@@ -2,8 +2,11 @@ package org.merariway.saleswarehouse.security;
 
 public class EndPointSecurity {
 
-    public static final String[] PUBLIC = {
-            "/api/v1",
-            "/api/v1/**"
+    public static final String[] OFFLINE_ACCESS = {
+            "/auth/register-email",
+    };
+
+    public static final String[] ADMIN_ACCESS = {
+            "/auth/adm/register-admin"
     };
 }

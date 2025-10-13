@@ -18,9 +18,7 @@ public class FirebaseInitialization {
 
             FirebaseOptions options = FirebaseOptions.builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-                    .setDatabaseUrl("https://<DATABASE_NAME>.firebaseio.com/")
                     .build();
-
             FirebaseApp.initializeApp(options);
         } catch (Exception ex) {
             ex.printStackTrace();

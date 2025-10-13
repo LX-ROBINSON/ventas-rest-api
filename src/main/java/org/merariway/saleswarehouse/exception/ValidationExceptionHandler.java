@@ -23,7 +23,7 @@ public class ValidationExceptionHandler {
 
             errors.put(field, message);
         });
-        ErrorArgument errArgument = new ErrorArgument("El formato que estas enviado es incorrecto", errors);
+        ErrorArgument errArgument = new ErrorArgument("No cumples con las condiciones de envio", errors);
         return new ResponseEntity<>(errArgument, HttpStatus.BAD_REQUEST);
     }
 }
