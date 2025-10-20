@@ -28,10 +28,11 @@ public class SecurityConfig  {
                 .sessionManagement(Customizer.withDefaults())
                 .authorizeHttpRequests(auth ->
                     auth.requestMatchers(EndPointSecurity.OFFLINE_ACCESS).permitAll()
+                            .requestMatchers("/auth/test").permitAll()
                             .anyRequest().authenticated()
                 )
-                .addFilterBefore(firebaseTokenFilter, UsernamePasswordAuthenticationFilter.class);
-
+                .addFilterBefore(firebaseTokenFilter, UsernamePasswordAuthenticationFilter.class)
+                .httpBasic(AbstractHttpConfigurer::disable);
         return http.build();
     }
 }
